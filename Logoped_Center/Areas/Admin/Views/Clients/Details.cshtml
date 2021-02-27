@@ -1,0 +1,44 @@
+﻿@model Client
+
+@if (Model.Age <= 12)
+{
+    <h1>Детали о ребенке</h1>
+}
+else 
+{
+    <h1>Детали о клиенте</h1>
+}
+
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Имя/Фамилия
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FirstName) / @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            Возраст
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+        <dt class="col-sm-2">
+            Пол
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gender)
+        </dd>        
+    </dl>
+</div>
+<div>
+    <a class="btn-sm button Delete" onclick="return confirm('Вы уверены, что хотите удалить?')" asp-action="Delete" asp-route-id="@Model.ClientId">
+        Удалить клиента из системы
+    </a>
+    <a asp-area="Admin" asp-action="Index">Пойти обратно</a>
+</div>
+
+
+

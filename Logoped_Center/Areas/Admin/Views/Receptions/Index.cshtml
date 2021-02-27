@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Reception>
+<h1>Приемы</h1>
+<p>
+    <a asp-action="Create">Назначить новый прием</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Название
+            </th>
+            <th>
+               Терапевт
+            </th>
+            <th>
+                Клиент
+            </th>
+            <th>
+                Статус
+            </th>
+        
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FirstName + item.User.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.FirstName + item.Client.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+           
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Детали</a> |
+                <a class="btn-sm button Delete"  onclick="return confirm('Вы уверены, что хотите удалить?')" asp-action="Delete" asp-route-id="@item.Id">
+                    <i class="far fa-trash-alt"></i>
+                </a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

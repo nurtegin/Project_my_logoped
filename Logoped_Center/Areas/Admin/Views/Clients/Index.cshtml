@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Client>
+
+<h1>Клиенты</h1>
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Имя
+            </th>
+            <th>
+                Фамилия
+            </th>
+            <th>
+                Возраст
+            </th>
+            <th>
+                Пол
+            </th>
+            <th>
+               Запись на прием
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td> |
+                <a asp-area="Admin" asp-action="Details" asp-route-id="@item.ClientId"> Детальнее о клиенте </a> |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
